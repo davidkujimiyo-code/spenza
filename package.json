@@ -1,0 +1,28 @@
+{
+  "name": "spenza",
+  "version": "1.0.0",
+  "description": "A modern expense tracking web application built with HTML, Tailwind CSS, and JavaScript.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidkujimiyo-code/spenza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/davidkujimiyo-code/spenza/issues"
+  },
+  "homepage": "https://github.com/davidkujimiyo-code/spenza#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "tailwindcss": "^4.3.1"
+  }
+}
