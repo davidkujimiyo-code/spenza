@@ -1,19 +1,1167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPENZA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="./css/output.css">
-  <link rel="icon" type="image/png" href="./assets/logo/favicon.png">
+    <title>SPENZA - Track. Budget. Grow.</title>
+
+    <link rel="icon" type="image/png" href="./assets/logo/favicon.png">
+
+    <link rel="stylesheet" href="./css/output.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body class="bg-slate-50 min-h-screen flex items-center justify-center">
+<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
 
-  <h1 class="text-6xl font-bold text-emerald-500">
-    SPENZA 🚀
-  </h1>
+    <!-- NAVBAR -->
+    <nav class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-300">
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+
+                    <img
+                        id="site-logo"
+                        src="./assets/logo/spenza-logo-light.png"
+                        alt="SPENZA Logo"
+                        class="w-auto h-14">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-8">
+
+                    <a href="#features"
+                        class="text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition">
+                        Features
+                    </a>
+
+                    <a href="#how-it-works"
+                        class="text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition">
+                        How It Works
+                    </a>
+
+                    <a href="#about"
+                        class="text-slate-600 dark:text-slate-300 hover:text-emerald-500 transition">
+                        About
+                    </a>
+
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex items-center gap-4">
+
+                    <button
+                    id="theme-toggle"
+                    class="text-slate-700 dark:text-white">
+
+                    <i id="desktop-theme-icon" data-lucide="moon"></i>
+
+                    </button>
+
+                    <a href="./pages/login.html"
+                        class="text-slate-700 dark:text-slate-300 font-medium">
+                        Login
+                    </a>
+
+                    <a href="./pages/register.html"
+                        class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-xl font-medium transition">
+                        Get Started
+                    </a>
+
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button
+                    id="menu-btn"
+                    class="md:hidden text-slate-800 dark:text-white">
+
+                    <i data-lucide="menu"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+            id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 min-h-[calc(100vh-80px)]">
+
+            <div class="flex flex-col justify-center px-6 py-8 gap-8 h-full">
+
+                <a href="#features" class="text-slate-700 dark:text-slate-300">Features</a>
+
+                <a href="#how-it-works" class="text-slate-700 dark:text-slate-300">How It Works</a>
+
+                <a href="#about" class="text-slate-700 dark:text-slate-300">About</a>
+
+                <div class="flex items-center justify-between">
+
+                    <span class="text-slate-700 dark:text-slate-300">
+                        Theme
+                    </span>
+
+                    <button
+                        id="mobile-theme-toggle"
+                        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+
+                        <i id="mobile-theme-icon" data-lucide="moon"></i>
+
+                    </button>
+
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-700">
+
+                <a href="./pages/login.html" class="text-slate-700 dark:text-slate-300">Login</a>
+
+                <a
+                    href="./pages/register.html"
+                    class="bg-emerald-500 text-white text-center py-3 rounded-xl">
+
+                    Get Started
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main
+    class="relative overflow-hidden bg-slate-50 dark:bg-slate-950">
+
+    <!-- GLOBAL BACKGROUND -->
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-cyan-50
+        dark:from-slate-950 dark:via-slate-900 dark:to-emerald-950">
+    </div>
+
+    <!-- Glow Orb Left -->
+    <div
+        class="absolute top-20 left-0 w-96 h-96 bg-emerald-400/20 blur-3xl rounded-full">
+    </div>
+
+    <!-- Glow Orb Right -->
+    <div
+        class="absolute top-96 right-0 w-[500px] h-[500px] bg-cyan-400/20 blur-3xl rounded-full">
+    </div>
+
+    <!-- HERO SECTION -->
+    <section
+    class="relative">
+
+        <div
+        class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-12">
+
+            <div
+                class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <!-- LEFT CONTENT -->
+
+                <div>
+
+                    <span
+                        class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium">
+
+                        <i data-lucide="wallet"></i>
+                        Smart Expense Tracking
+
+                    </span>
+
+                    <h1
+                        class="mt-6 text-5xl md:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
+
+                        Take Control of
+                        <span class="text-emerald-500">
+                            Your Finances
+                        </span>
+
+                    </h1>
+
+                    <p
+                        class="mt-6 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
+
+                        Track income, manage expenses, and gain powerful insights into your spending habits with SPENZA.
+
+                        Build healthier financial habits and stay in control of your money.
+
+                    </p>
+
+                    <!-- CTA -->
+
+                    <div
+                        class="mt-8 flex flex-col sm:flex-row gap-4">
+
+                        <a
+                            href="./pages/register.html"
+                            class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl text-center font-medium transition">
+
+                            Get Started
+
+                        </a>
+
+                        <a
+                            href="#features"
+                            class="border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-xl text-center">
+
+                            Learn More
+
+                        </a>
+
+                    </div>
+
+                    <!-- TRUST BADGES -->
+                    <div class="flex flex-wrap gap-6 mt-6 text-sm text-slate-500 dark:text-slate-400">
+
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="shield-check"></i>
+                            Secure
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="zap"></i>
+                            Fast
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="badge-check"></i>
+                            Free to Start
+                        </span>
+
+                    </div>
+
+
+                    <!-- STATS -->
+
+                    <div
+                        class="grid grid-cols-3 gap-4 mt-12">
+
+                        <div>
+
+                            <h3
+                                class="text-3xl font-bold text-slate-900 dark:text-white">
+
+                                100%
+
+                            </h3>
+
+                            <p
+                                class="text-slate-500">
+
+                                Free
+
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <h3
+                                class="text-3xl font-bold text-slate-900 dark:text-white">
+
+                                24/7
+
+                            </h3>
+
+                            <p
+                                class="text-slate-500">
+
+                                Access
+
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <h3
+                                class="text-3xl font-bold text-slate-900 dark:text-white">
+
+                                98%
+
+                            </h3>
+
+                            <p
+                                class="text-slate-500">
+
+                                Satisfaction
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT CONTENT -->
+
+                <div
+                    class="relative">
+
+                    <div
+                        class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md bg-white dark:bg-slate-900 rounded-3xl shadow-2xl p-6 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition duration-500">
+
+                        <!-- Balance Card -->
+
+                        <div
+                            class="bg-emerald-500 text-white rounded-2xl p-6">
+
+                            <p class="opacity-80">
+                                Total Balance
+                            </p>
+
+                            <h2 class="text-4xl font-bold mt-2">
+                                ₦245,000
+                            </h2>
+
+                        </div>
+
+                        <!-- Income & Expense -->
+
+                        <div
+                            class="grid grid-cols-2 gap-4 mt-6">
+
+                            <div
+                                class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl">
+
+                                <p
+                                    class="text-sm text-slate-500">
+
+                                    Income
+
+                                </p>
+
+                                <h3
+                                    class="text-xl font-bold text-emerald-500">
+
+                                    ₦120,000
+
+                                </h3>
+
+                            </div>
+
+                            <div
+                                class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl">
+
+                                <p
+                                    class="text-sm text-slate-500">
+
+                                    Expenses
+
+                                </p>
+
+                                <h3
+                                    class="text-xl font-bold text-red-500">
+
+                                    ₦45,000
+
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Recent Transactions -->
+
+                        <div
+                            class="mt-6">
+
+                            <h4
+                                class="font-semibold text-slate-900 dark:text-white">
+
+                                Recent Transactions
+
+                            </h4>
+
+                            <div
+                                class="space-y-3 mt-4 text-slate-700 dark:text-slate-300">
+
+                                <div
+                                    class="flex justify-between">
+
+                                    <span>🍔 Food</span>
+
+                                    <span>-₦5,000</span>
+
+                                </div>
+
+                                <div
+                                    class="flex justify-between">
+
+                                    <span>💰 Salary</span>
+
+                                    <span class="text-emerald-500">
+                                        +₦80,000
+                                    </span>
+
+                                </div>
+
+                                <div
+                                    class="flex justify-between">
+
+                                    <span>🚕 Transport</span>
+
+                                    <span>
+                                        -₦2,500
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section
+        id="features"
+        class="relative pt-12 pb-24">
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+            <!-- Heading -->
+
+            <div class="text-center max-w-3xl mx-auto">
+
+                <span
+                    class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium">
+
+                    <i data-lucide="sparkles" class="w-10 h-10 scale-110"></i>
+
+                    Features
+
+                </span>
+
+                <h2
+                    class="mt-6 text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+
+                    Everything You Need To
+                    Manage Your Money
+
+                </h2>
+
+                <p
+                    class="mt-6 text-lg text-slate-600 dark:text-slate-400">
+
+                    SPENZA helps you track, analyze and improve your financial habits through a simple and intuitive experience.
+
+                </p>
+
+            </div>
+
+            <!-- Feature Cards -->
+
+            <div
+                class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+
+                <!-- Card 1 -->
+
+                <div
+                    class="p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md 
+                    hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/10 transition duration-300">
+
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-600">
+
+                        <i data-lucide="wallet"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-6 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Track Expenses
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Record and monitor every transaction with ease. Stay aware of your spending habits in real time.
+
+                    </p>
+
+                </div>
+
+                <!-- Card 2 -->
+
+                <div
+                    class="p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60
+                    backdrop-blur-md hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/10 transition duration-300">
+
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-cyan-100 flex items-center justify-center text-cyan-600">
+
+                        <i data-lucide="chart-column"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-6 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Visual Analytics
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Gain insights through charts, reports and financial summaries that help you make smarter decisions.
+
+                    </p>
+
+                </div>
+
+                <!-- Card 3 -->
+
+                <div
+                    class="p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60
+                    backdrop-blur-md hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/10 transition duration-300">
+
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-violet-100 flex items-center justify-center text-violet-600">
+
+                        <i data-lucide="target"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-6 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Smart Budgeting
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Build better money habits and stay on track with your financial goals.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section
+        id="how-it-works"
+        class="relative pt-8 pb-16">
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+            <!-- Section Header -->
+
+            <div class="text-center max-w-3xl mx-auto">
+
+                <span
+                    class="inline-flex items-center gap-3 bg-cyan-100 text-cyan-700 px-5 py-3 rounded-full text-sm font-medium">
+
+                    <i data-lucide="workflow" class="w-5 h-5"></i>
+
+                    How It Works
+
+                </span>
+
+                <h2
+                    class="mt-6 text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+
+                    Get Started In Minutes
+
+                </h2>
+
+                <p
+                    class="mt-6 text-lg text-slate-600 dark:text-slate-400">
+
+                    SPENZA makes managing your finances simple, intuitive, and stress-free.
+
+                </p>
+
+            </div>
+
+            <!-- Steps -->
+
+            <div
+                class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+
+                <!-- STEP 1 -->
+
+                <div
+                class="relative text-center group rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-300 
+                hover:-translate-y-2  hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+
+                    <div
+                        class="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <div
+                        class="w-20 h-20 mx-auto rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center transition-all duration-300 group-hover:scale-110
+                        group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-emerald-400/30 relative z-10">
+
+                        <i data-lucide="user-plus" 
+                        class="w-8 h-8 transition-transform duration-300 group-hover:scale-125">
+                        </i>
+
+                    </div>
+
+                    <div
+                        class="mt-6 text-sm font-semibold text-emerald-500">
+
+                        STEP 01
+
+                    </div>
+
+                    <h3
+                        class="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Create Account
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Register and personalize your financial workspace.
+
+                    </p>
+
+                    <div
+                        class="hidden lg:flex absolute top-[95px] -right-8 text-emerald-400 z-20">
+
+                        <i data-lucide="arrow-right" class="w-8 h-8"></i>
+
+                    </div>
+
+                </div>
+
+                <!-- STEP 2 -->
+
+                <div
+                    class="relative text-center group rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-300 
+                    hover:-translate-y-2  hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+
+                    <div
+                        class="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <div
+                        class="w-20 h-20 mx-auto rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center transition-all duration-300 group-hover:scale-110
+                        group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-emerald-400/30 relative z-10">
+
+                        <i data-lucide="wallet" 
+                        class="w-8 h-8 transition-transform duration-300 group-hover:scale-125">
+                        </i>
+
+                    </div>
+
+                    <div
+                        class="mt-6 text-sm font-semibold text-cyan-500">
+
+                        STEP 02
+
+                    </div>
+
+                    <h3
+                        class="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Add Transactions
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Record income and expenses in just a few clicks.
+
+                    </p>
+
+                    <div
+                        class="hidden lg:flex absolute top-[95px] -right-8 text-emerald-400 z-20">
+
+                        <i data-lucide="arrow-right" class="w-8 h-8"></i>
+
+                    </div>
+
+                </div>
+
+                <!-- STEP 3 -->
+
+                <div
+                    class="relative text-center group rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-300 
+                    hover:-translate-y-2  hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+
+                    <div
+                        class="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <div
+                        class="w-20 h-20 mx-auto rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center transition-all duration-300 group-hover:scale-110
+                        group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-emerald-400/30 relative z-10">
+
+                        <i data-lucide="chart-column" 
+                        class="w-8 h-8 transition-transform duration-300 group-hover:scale-125">
+                        </i>
+
+                    </div>
+
+                    <div
+                        class="mt-6 text-sm font-semibold text-violet-500">
+
+                        STEP 03
+
+                    </div>
+
+                    <h3
+                        class="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Track Spending
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Analyze trends through visual reports and insights.
+
+                    </p>
+
+                    <div
+                       class="hidden lg:flex absolute top-[95px] -right-8 text-emerald-400 z-20">
+
+                        <i data-lucide="arrow-right" class="w-8 h-8"></i>
+
+                    </div>
+
+                </div>
+
+                <!-- STEP 4 -->
+
+                <div
+                    class="relative text-center group rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-300 
+                    hover:-translate-y-2  hover:border-emerald-400/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+
+                    <div
+                        class="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/5 to-transparent pointer-events-none">
+                    </div>
+
+                    <div
+                        class="w-20 h-20 mx-auto rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center transition-all duration-300 group-hover:scale-110
+                        group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-emerald-400/30 relative z-10">
+
+                        <i data-lucide="target"
+                        class="w-8 h-8 transition-transform duration-300 group-hover:scale-125">
+                        </i>
+
+                    </div>
+
+                    <div
+                        class="mt-6 text-sm font-semibold text-amber-500">
+
+                        STEP 04
+
+                    </div>
+
+                    <h3
+                        class="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+
+                        Reach Goals
+
+                    </h3>
+
+                    <p
+                        class="mt-4 text-slate-600 dark:text-slate-400">
+
+                        Build smarter financial habits and stay on track.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA SECTION -->
+    <section
+        class="relative pt-4 pb-6 md:py-20">
+
+        <div
+            class="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+
+            <div
+                class="relative overflow-hidden rounded-[40px] bg-gradient-to-r from-emerald-500 via-emerald-600 to-cyan-600
+                p-12 lg:p-16">
+
+                <!-- Glow -->
+                <div
+                    class="absolute -top-20 -right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl">
+                </div>
+
+                <div
+                    class="absolute -bottom-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl">
+                </div>
+
+                <div
+                    class="relative z-10 text-center">
+
+                    <h2
+                        class="text-4xl md:text-5xl font-bold text-white">
+
+                        Ready To Take Control
+                        Of Your Finances?
+
+                    </h2>
+
+                    <p
+                        class="mt-6 text-lg text-white/80 max-w-2xl mx-auto">
+
+                        Join SPENZA today and start building smarter financial habits.
+
+                    </p>
+
+                    <div
+                        class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+
+                        <a
+                            href="./pages/register.html"
+                            class="bg-white text-emerald-600 hover:bg-slate-100 hover:scale-105 px-8 py-4 rounded-xl font-semibold transition duration-300">
+
+                            Get Started Free
+
+                        </a>
+
+                        <a
+                            href="#features"
+                            class="border border-white/30 text-white px-8 py-4 rounded-xl hover:bg-white/10 hover:scale-105 transition duration-300">
+
+                            Explore Features
+
+                        </a>
+
+                    </div>
+
+                    <div
+                        class="mt-10 flex flex-wrap justify-center gap-8 text-white/80">
+
+                        <span class="flex items-center gap-2 hover:text-white transition duration-300">
+                            <i data-lucide="shield-check"></i>
+                            Secure
+                        </span>
+
+                        <span class="flex items-center gap-2 hover:text-white transition duration-300">
+                            <i data-lucide="badge-check"></i>
+                            Free To Use
+                        </span>
+
+                        <span class="flex items-center gap-2 hover:text-white transition duration-300">
+                            <i data-lucide="zap"></i>
+                            Fast Setup
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div
+        class="relative h-32 overflow-hidden">
+
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5
+            to-transparent">
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer
+        id="about"
+        class="relative overflow-hidden">
+
+        <div
+            class="absolute bottom-0 left-0 w-80 h-80
+            bg-emerald-500/10 blur-3xl rounded-full">
+        </div>
+
+        <div
+            class="absolute top-0 right-0 w-96 h-96
+            bg-cyan-500/10 blur-3xl rounded-full">
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-8 py-8 md:py-16">
+
+            <div
+                class="grid lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 text-center md:text-left">
+
+                <!-- Brand -->
+                <div class="flex flex-col items-center md:items-start">
+
+                    <img
+                        src="./assets/logo/spenza-logo-light.png"
+                        alt="SPENZA Logo"
+                        class="h-12 md:h-14 w-auto"
+                        id="footer-logo">
+
+                    <p
+                        class="mt-4 max-w-xs text-base md:text-sm leading-8 text-slate-600 dark:text-slate-400">
+
+                        Track. Budget. Grow.
+
+                        SPENZA helps you build smarter financial habits and stay in control of your money.
+
+                    </p>
+
+                </div>
+
+                <!-- Product -->
+                <div class="text-center md:text-left">
+
+                    <h3
+                        class="font-semibold text-slate-900 dark:text-white">
+
+                        Product
+
+                    </h3>
+
+                    <div
+                        class="mt-4 flex flex-col gap-3">
+
+                        <a href="#features"
+                            class="text-lg md:text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-500">                          Features
+                        </a>
+
+                        <a href="#how-it-works"
+                            class="text-lg md:text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-500">
+                            How It Works
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Account -->
+                <div class="text-center md:text-left">
+
+                    <h3
+                        class="font-semibold text-slate-900 dark:text-white">
+
+                        Account
+
+                    </h3>
+
+                    <div
+                        class="mt-4 flex flex-col gap-3">
+
+                        <a href="./pages/login.html"
+                            class="text-slate-600 dark:text-slate-400 hover:text-emerald-500">
+                            Login
+                        </a>
+
+                        <a href="./pages/register.html"
+                            class="text-slate-600 dark:text-slate-400 hover:text-emerald-500">
+                            Register
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Social -->
+                <div class="text-center md:text-left">
+
+                    <h3
+                        class="font-semibold text-slate-900 dark:text-white">
+
+                        Connect
+
+                    </h3>
+
+                    <div
+                        class="mt-4 flex justify-center md:justify-start gap-4">
+
+                        <a href="https://github.com/davidkujimiyo"
+                            target="_blank"
+                            class="group p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:scale-110 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all duration-300">
+
+                            <svg
+                                class="w-5 h-5 text-slate-600 dark:text-slate-300 transition-all duration-300 group-hover:text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor">
+
+                                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.95.1-.75.4-1.25.72-1.54-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.97 10.97 0 015.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.24 2.77.12 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.42.36.78 1.06.78 2.14v3.18c0 .31.21.67.8.56A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+
+                            </svg>
+
+                        </a>
+
+                        <a href="https://linkedin.com/in/yourprofile"
+                            target="_blank"
+                            class=" group p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:scale-110 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all duration-300">
+
+                            <svg
+                                class="w-5 h-5 text-slate-600 dark:text-slate-300 transition-all duration-300 group-hover:text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor">
+
+                                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7 0h3.83v2.19h.05c.53-1.01 1.84-2.19 3.79-2.19 4.05 0 4.8 2.66 4.8 6.11V24h-4v-7.34c0-1.75-.03-4-2.44-4-2.45 0-2.82 1.91-2.82 3.87V24h-4V8z"/>
+
+                            </svg>
+
+                        </a>
+
+                        <a
+                            href="#"
+                            class="p-3 group rounded-full bg-slate-100 dark:bg-slate-800 hover:scale-110 hover:bg-emerald-500 hover:text-white
+                            hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all duration-300">
+
+                            <i data-lucide="globe" class="w-5 h-5 text-slate-600 dark:text-slate-300 transition-all duration-300 group-hover:text-white"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom Footer -->
+
+            <div
+                class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+
+                <p
+                    class="text-center text-slate-500">
+
+                    © 2026 SPENZA. All rights reserved.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const html = document.documentElement;
+
+        const desktopToggle =
+        document.getElementById("theme-toggle");
+
+        const mobileToggle =
+        document.getElementById("mobile-theme-toggle");
+
+        const logo =
+        document.getElementById("site-logo");
+
+        function updateTheme() {
+
+        const isDark =
+        html.classList.contains("dark");
+
+        logo.src = isDark
+        ? "./assets/logo/spenza-logo-dark.png"
+        : "./assets/logo/spenza-logo-light.png";
+
+        const desktopThemeIcon =
+        document.getElementById("desktop-theme-icon");
+
+        const mobileThemeIcon =
+        document.getElementById("mobile-theme-icon");
+
+        desktopThemeIcon.setAttribute(
+        "data-lucide",
+        isDark ? "sun" : "moon"
+        );
+
+        mobileThemeIcon.setAttribute(
+        "data-lucide",
+        isDark ? "sun" : "moon"
+        );
+
+        const footerLogo =
+        document.getElementById("footer-logo");
+
+        footerLogo.src = isDark
+        ? "./assets/logo/spenza-logo-dark.png"
+        : "./assets/logo/spenza-logo-light.png";
+
+        lucide.createIcons();
+        }
+
+        if (localStorage.getItem("theme") === "dark") {
+            html.classList.add("dark");
+        }
+
+        updateTheme();
+
+        function toggleTheme() {
+
+            html.classList.toggle("dark");
+
+            localStorage.setItem(
+                "theme",
+                html.classList.contains("dark")
+                    ? "dark"
+                    : "light"
+            );
+
+            updateTheme();
+        }
+
+        desktopToggle.addEventListener(
+            "click",
+            toggleTheme
+        );
+
+        mobileToggle.addEventListener(
+            "click",
+            toggleTheme
+        );
+
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
 
 </body>
 </html>
