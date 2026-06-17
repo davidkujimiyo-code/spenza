@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | SPENZA</title>
+
+    <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
+    <link rel="stylesheet" href="../css/output.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .drawer-item{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        width:100%;
+        padding:12px;
+        border-radius:12px;
+        }
+
+        .drawer-item:hover{
+        background:#ecfdf5;
+        }
+    </style>
+
+</head>
+
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
+
+    <div
+    id="mobileDrawer"
+    class="fixed top-0 left-0 h-full w-72 bg-slate-950 text-white z-50 transform -translate-x-full transition-transform duration-300 lg:hidden">
+
+    <div class="p-6">
+
+        <img
+            src="../assets/logo/spenza-logo-dark.png"
+            class="h-10 mb-8">
+
+        <div class="space-y-2">
+
+            <button class="drawer-link flex items-center gap-3 w-full px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5">
+
+                <i data-lucide="bell"></i>
+                <span>Notifications</span>
+
+            </button>
+
+            <button class="drawer-link flex items-center gap-3 w-full px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5">
+
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+
+            </button>
+
+            <button
+                id="mobileThemeToggle"
+                class="drawer-link flex items-center gap-3 w-full px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5">
+
+                <i data-lucide="moon"></i>
+                <span>Dark Mode</span>
+
+            </button>
+
+        </div>
+
+        <div class="absolute bottom-6 left-6 right-6">
+
+            <button
+                id="logoutBtnMobile"
+                class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-400">
+
+                <i data-lucide="log-out"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <div
+        id="drawerOverlay"
+        class="fixed inset-0 bg-black/50 hidden z-40 lg:hidden">
+    </div>
+
+    <div class="min-h-screen flex">
+
+        <!-- SIDEBAR -->
+        <aside class="hidden lg:flex w-72 bg-slate-950 text-white flex-col relative overflow-hidden">
+
+            <!-- Glow -->
+            <div class="absolute top-0 left-0 w-72 h-72 bg-emerald-500/10 blur-3xl rounded-full"></div>
+
+            <div class="relative z-10 p-8">
+
+                <img
+                    src="../assets/logo/spenza-logo-dark.png"
+                    alt="SPENZA"
+                    class="h-14">
+
+            </div>
+
+            <nav class="relative z-10 flex-1 px-6">
+
+                <div class="space-y-2">
+
+                    <a href="./dashboard.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">
+
+                        <i data-lucide="layout-dashboard"></i>
+
+                        Dashboard
+
+                    </a>
+
+                    <a href="./transactions.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+
+                        <i data-lucide="receipt"></i>
+
+                        Transactions
+
+                    </a>
+
+                    <a href="./budgets.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+
+                        <i data-lucide="wallet"></i>
+
+                        Budgets
+
+                    </a>
+
+                    <a href="./analytics.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+
+                        <i data-lucide="bar-chart-3"></i>
+
+                        Analytics
+
+                    </a>
+
+                    <a href="./settings.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition">
+
+                        <i data-lucide="settings"></i>
+
+                        Settings
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+            <div class="relative z-10 p-6">
+
+                <button
+                    id="logoutBtn"
+                    class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-300 hover:bg-red-500/20 transition">
+
+                    <i data-lucide="log-out"></i>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 p-6 lg:p-8 dark:bg-slate-950 transition-colors duration-300">
+
+            <!-- TOP BAR -->
+            <div class="flex items-center justify-between gap-4">
+
+            <div class="flex items-start gap-3">
+
+            <button
+                id="mobileMenuBtn"
+                class="lg:hidden mt-1 w-10 h-10 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm text-slate-900 dark:text-white">
+
+                <i data-lucide="menu"></i>
+
+            </button>
+
+            <div>
+                <h1
+                    id="dashboardWelcome"
+                    class="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+
+                    Welcome Back 👋
+
+                </h1>
+
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">
+                    Here's an overview of your finances.
+                </p>
+            </div>
+
+        </div>
+
+            <div class="hidden md:flex items-center gap-3">
+
+                <button
+                    id="notificationBtn"
+                    class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800
+                    text-slate-700 dark:text-slate-200 hover:border-emerald-500 transition-all duration-300">
+
+                    <i data-lucide="bell"></i>
+
+                </button>
+
+                <button
+                    id="themeToggle"
+                    class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800
+                    text-slate-700 dark:text-slate-200 hover:border-emerald-500 transition-all duration-300">
+
+                    <i id="themeIcon" data-lucide="moon"></i>
+
+                </button>
+
+                <div
+                    id="userAvatar"
+                    class="w-11 h-11 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold">
+
+                    DA
+
+                </div>
+
+            </div>
+
+        </div>
+
+            <!-- SUMMARY CARDS -->
+            <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-xl
+                    hover:shadow-emerald-500/10 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:text-white">
+
+                    <div class="flex justify-between items-center">
+
+                        <span class="text-slate-500 dark:text-slate-400">
+                            Current Balance
+                        </span>
+
+                        <i data-lucide="wallet"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+
+                        ₦250,000
+
+                    </h3>
+
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-xl
+                    hover:shadow-emerald-500/10 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:text-white">
+
+                    <div class="flex justify-between items-center">
+
+                        <span class="text-slate-500 dark:text-slate-400">
+                            Income
+                        </span>
+
+                        <i data-lucide="trending-up"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+
+                        ₦350,000
+
+                    </h3>
+
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-xl
+                    hover:shadow-emerald-500/10 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:text-white">
+
+                    <div class="flex justify-between items-center">
+
+                        <span class="text-slate-500 dark:text-slate-400">
+                            Expenses
+                        </span>
+
+                        <i data-lucide="credit-card"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+
+                        ₦100,000
+
+                    </h3>
+
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-xl
+                    hover:shadow-emerald-500/10 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:text-white">
+
+                    <div class="flex justify-between items-center">
+
+                        <span class="text-slate-500 dark:text-slate-400">
+                            Savings Rate
+                        </span>
+
+                        <i data-lucide="piggy-bank"></i>
+
+                    </div>
+
+                    <h3
+                        class="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+
+                        71%
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div class="mt-8">
+
+                <h2 class="text-xl font-semibold text-slate-900 dark:text-white dark:text-white">
+
+                    Quick Actions
+
+                </h2>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+
+                    <a href="./transactions.html"
+                        class="group rounded-2xl p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950/30
+                        hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2">
+
+                        <i data-lucide="minus-circle"
+                        class="w-5 h-5 text-emerald-500
+                        group-hover:rotate-12 transition"></i>
+
+                        <span>
+                        Add Expense
+                        </span>
+
+                    </a>
+
+                    <a href="./budgets.html"
+                        class="group rounded-2xl p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-violet-500 hover:bg-violet-50
+                        dark:hover:bg-violet-950/30 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+
+                        <i data-lucide="wallet"
+                        class="w-5 h-5 text-violet-500"></i>
+
+                        <span>
+                        Create Budget
+                        </span>
+
+                    </a>
+
+                    <a href="./transactions.html"
+                        class="group rounded-2xl p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 hover:bg-sky-50 dark:hover:bg-sky-950/30
+                        hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+
+                        <i data-lucide="plus-circle"
+                        class="w-5 h-5 text-sky-500"></i>
+
+                        <span>
+                        Add Income
+                        </span>
+
+                    </a>
+
+                    <a href="./analytics.html"
+                        class="group rounded-2xl p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 hover:bg-amber-50
+                        dark:hover:bg-amber-950/30 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+
+                        <i data-lucide="bar-chart-3"
+                        class="w-5 h-5 text-amber-500"></i>
+
+                        <span>
+                        Analytics
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- BUDGET PROGRESS -->
+            <div
+                class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mt-8 dark:bg-slate-900">
+
+                <div class="flex justify-between items-center">
+
+                    <h2
+                        class="font-semibold text-lg text-slate-900 dark:text-white">
+
+                        Budget Progress
+
+                    </h2>
+
+                    <span class="text-emerald-500 font-semibold">
+
+                        67%
+
+                    </span>
+
+                </div>
+
+                <div class="mt-4 h-3 bg-slate-200 rounded-full overflow-hidden">
+
+                    <div
+                        class="h-full bg-emerald-500 rounded-full w-[67%]">
+                    </div>
+
+                </div>
+
+                <p class="mt-3 text-slate-500 text-slate-400">
+
+                    ₦100,000 spent out of ₦150,000 budget
+
+                </p>
+
+            </div>
+
+            <!-- CHARTS -->
+            <div class="grid lg:grid-cols-2 gap-6 mt-8">
+
+                <div
+                    class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm dark:bg-slate-900">
+
+                    <h2
+                        class="font-semibold text-lg text-slate-900 dark:text-white mb-4">
+
+                        Spending Trend
+
+                    </h2>
+
+                    <canvas id="spendingChart"></canvas>
+
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm dark:bg-slate-900">
+
+                    <h2
+                        class="font-semibold text-lg text-slate-900 dark:text-white mb-4">
+
+                        Expense Breakdown
+
+                    </h2>
+
+                    <canvas id="expenseChart"></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- RECENT TRANSACTIONS -->
+
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm mt-8">
+
+                <h2 class="font-semibold text-lg text-slate-900 dark:text-white mb-6">
+                    Recent Transactions
+                </h2>
+
+                <div class="space-y-5">
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center">
+                                <i data-lucide="film"></i>
+                            </div>
+
+                            <div>
+                                <p class="font-medium dark:text-white">
+                                    Netflix Subscription
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    Entertainment
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <span class="text-red-500 font-medium">
+                            - ₦7,500
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center">
+                                <i data-lucide="wallet"></i>
+                            </div>
+
+                            <div>
+                                <p class="font-medium dark:text-white">
+                                    Salary Payment
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    Income
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <span class="text-emerald-500 font-medium">
+                            + ₦350,000
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center">
+                                <i data-lucide="car"></i>
+                            </div>
+
+                            <div>
+                                <p class="font-medium dark:text-white">
+                                    Transport
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    Mobility
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <span class="text-red-500 font-medium">
+                            - ₦2,000
+                        </span>
+
+                    </div>
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center">
+                                <i data-lucide="utensils-crossed"></i>
+                            </div>
+
+                            <div>
+                                <p class="font-medium dark:text-white">
+                                    Food & Dining
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    Lifestyle
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <span class="text-red-500 font-medium">
+                            - ₦5,500
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <button
+    class="lg:hidden fixed bottom-24 right-5 z-50 w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl flex items-center justify-center">
+
+    <i data-lucide="plus"></i>
+
+    </button>
+
+   <nav
+        class="fixed bottom-4 left-4 right-4 lg:hidden z-50">
+
+        <div
+        class="bg-white/90 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl border border-slate-200 shadow-2xl">
+
+            <div class="grid grid-cols-5">
+
+                <a href="./dashboard.html" class="py-3 flex flex-col items-center text-emerald-500">
+
+                    <i data-lucide="layout-dashboard"></i>
+
+                    <span class="text-[11px]">
+                        Home
+                    </span>
+
+                </a>
+
+                <a href="./transactions.html" class="py-3 flex flex-col items-center text-slate-500">
+
+                    <i data-lucide="receipt"></i>
+
+                    <span class="text-[11px]">
+                        Transactions
+                    </span>
+
+                </a>
+
+                <a href="./budgets.html" class="py-3 flex flex-col items-center text-slate-500">
+
+                    <i data-lucide="wallet"></i>
+
+                    <span class="text-[11px]">
+                        Budget
+                    </span>
+
+                </a>
+
+                <a href="./analytics.html" class="py-3 flex flex-col items-center text-slate-500">
+
+                    <i data-lucide="bar-chart-3"></i>
+
+                    <span class="text-[11px]">
+                        Analytics
+                    </span>
+
+                </a>
+
+                <a href="./analytics.html" class="py-3 flex flex-col items-center text-slate-500">
+
+                    <i data-lucide="user"></i>
+
+                    <span class="text-[11px]">
+                        Profile
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <script src="../js/dashboard/dashboard.js"></script>
+
+</body>
+
+</html>
