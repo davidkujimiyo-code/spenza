@@ -1,3 +1,15 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.goal-card.selected {
+    border-color: #10b981;
+    background: #ecfdf5;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(16,185,129,.15);
+}
+
+.goal-card.selected .goal-check {
+    background: #10b981;
+    border-color: #10b981;
+}

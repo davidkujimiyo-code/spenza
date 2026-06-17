@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | SPENZA</title>
+
+    <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
+
+    <link rel="stylesheet" href="../css/output.css">
+</head>
+
+<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+
+    <div class="min-h-screen grid lg:grid-cols-[1.3fr_1fr]">
+
+        <!-- LEFT SIDE -->
+        <div
+            class="hidden lg:flex bg-slate-950 relative overflow-hidden items-center">
+
+            <!-- Glow Orbs -->
+            <div
+                class="absolute top-20 left-10 w-72 h-72 bg-emerald-500/20 blur-3xl rounded-full">
+            </div>
+
+            <div
+                class="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/20 blur-3xl rounded-full">
+            </div>
+
+            <!-- Grid Pattern -->
+            <div
+                class="absolute inset-0 opacity-10"
+                style="
+                    background-image:
+                    linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+                    background-size:40px 40px;">
+            </div>
+
+            <div
+                class="relative z-10 w-full max-w-2xl mx-auto px-16">
+
+                <img
+                    src="../assets/logo/spenza-logo-dark.png"
+                    alt="SPENZA"
+                    class="h-20 mb-10">
+
+                <h1
+                    class="text-7xl font-bold text-white leading-tight">
+
+                    <span class="block">
+                        Welcome To
+                    </span>
+
+                    <span class="text-emerald-400 block">
+                        SPENZA
+                    </span>
+
+                </h1>
+
+                <p
+                    class="mt-6 text-xl text-slate-300 leading-relaxed">
+
+                    Track expenses, manage budgets and build smarter financial habits.
+
+                </p>
+
+                <!-- Features -->
+                <div class="mt-10 flex flex-col gap-4 w-fit">
+
+                    <div class="group inline-flex items-center gap-3 text-slate-200 bg-white/5 backdrop-blur-md rounded-xl px-5 py-3 border border-white/10 hover:bg-emerald-500/10 
+                        hover:border-emerald-400/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300">
+                        <i data-lucide="wallet" class="group-hover:text-emerald-400 transition-colors duration-300">
+                        </i>
+
+                        <span>Track Expenses</span>
+                    </div>
+
+                    <div class="group inline-flex items-center gap-3 text-slate-200 bg-white/5 backdrop-blur-md rounded-xl px-5 py-3 border border-white/10 hover:bg-emerald-500/10 
+                        hover:border-emerald-400/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300">
+                        <i data-lucide="target" class="group-hover:text-emerald-400 transition-colors duration-300">
+                        </i>
+
+                        <span>Smart Budgeting</span>
+                    </div>
+
+                    <div class="group inline-flex items-center gap-3 text-slate-200 bg-white/5 backdrop-blur-md rounded-xl px-5 py-3 border border-white/10 hover:bg-emerald-500/10 
+                        hover:border-emerald-400/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300">
+                        <i data-lucide="bar-chart-3"  class="group-hover:text-emerald-400 transition-colors duration-300"></i>
+
+                        <span>Visual Analytics</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div
+            class="lg:hidden relative overflow-hidden
+            bg-slate-950 text-white text-center px-6 py-12">
+
+            <div
+                class="absolute top-0 left-0 w-56 h-56
+                bg-emerald-500/20 blur-3xl rounded-full">
+            </div>
+
+            <div
+                class="absolute bottom-0 right-0 w-56 h-56
+                bg-cyan-500/20 blur-3xl rounded-full">
+            </div>
+
+            <div
+                class="absolute inset-0 opacity-10"
+                style="
+                background-image:
+                linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+                background-size:40px 40px;">
+            </div>
+
+            <img
+                src="../assets/logo/spenza-logo-dark.png"
+                class="h-16 mx-auto mb-4 relative z-10">
+
+            <h2 class="text-4xl font-bold relative z-10">
+                Create Account
+            </h2>
+
+            <p class="mt-3 text-white/90 relative z-10">
+                Start tracking your finances today.
+            </p>
+
+        </div>
+
+        <!-- FORM PANEL -->
+        <div
+            class="flex items-center justify-center
+            px-6 py-6 lg:py-12">
+
+            <div
+                class="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-200 dark:border-slate-800">
+
+                <div class="hidden lg:block">
+
+                    <img
+                    src="../assets/logo/spenza-logo-light.png"
+                    alt="SPENZA Logo"
+                    class="h-14 w-auto mb-8">
+
+                    <h2
+                        class="text-3xl font-bold
+                        text-slate-900 dark:text-white">
+
+                        Create Account
+
+                    </h2>
+
+                    <p
+                        class="mt-2 text-slate-500 dark:text-slate-400">
+
+                        Start tracking your finances today.
+
+                    </p>
+
+                </div>
+
+                <form id="registerForm" class="mt-8 space-y-5">
+
+                    <input
+                        id="fullName"
+                        type="text"
+                        placeholder="Full Name"
+                        class="w-full px-4 py-3 rounded-xl border
+                        border-slate-300 dark:border-slate-700
+                        bg-white dark:bg-slate-900">
+                        
+                    <p id="fullNameError" class="text-red-500 text-xs mt-1 hidden"></p>
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Email Address"
+                        class="w-full px-4 py-3 rounded-xl border
+                        border-slate-300 dark:border-slate-700
+                        bg-white dark:bg-slate-900">
+                    <p id="emailError" class="text-red-500 text-xs mt-1 hidden"></p>
+
+                    <div class="relative">
+
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Password"
+                            class="w-full border border-slate-300 rounded-xl px-4 py-4 pr-12">
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-500">
+
+                            <i data-lucide="eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <p class="mt-2 text-xs text-slate-500">
+                        Must contain at least 8 characters, one uppercase letter,
+                        one number and one special character.
+                    </p>
+
+                    <div
+                        id="password-strength"
+                        class="h-2 mt-3 bg-slate-200 rounded-full overflow-hidden">
+
+                        <div
+                            id="strength-bar"
+                            class="h-full w-0 bg-red-500 transition-all duration-300">
+                        </div>
+                    
+                    </div>
+
+                    <p id="passwordError" class="text-red-500 text-xs mt-1 hidden"></p>
+
+                    <div class="relative mt-4">
+
+                    <input
+                        id="confirmPassword"
+                        type="password"
+                        placeholder="Confirm Password"
+                        class="w-full border border-slate-300 rounded-xl px-4 py-4 pr-12">
+
+                    <button
+                        type="button"
+                        id="toggleConfirmPassword"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-500">
+
+                        <i data-lucide="eye"></i>
+
+                    </button>
+
+                </div>
+
+                <p
+                    id="password-match"
+                    class="mt-2 text-xs">
+                </p>
+
+                <p id="confirmPasswordError" class="text-red-500 text-xs mt-1 hidden"></p>
+
+                <div
+                    id="formMessage"
+                    class="hidden rounded-xl px-4 py-3 text-sm font-medium">
+                </div>
+                    <button
+                        id="registerBtn"
+                        type="submit"
+                        class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white
+                        font-semibold transition">
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+                <p
+                    class="mt-6 text-center
+                    text-slate-500">
+
+                    Already have an account?
+
+                    <a
+                        href="./login.html"
+                        class="text-emerald-500 font-semibold">
+
+                        Login
+
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../js/auth/register.js"></script>
+
+</body>
+</html>
