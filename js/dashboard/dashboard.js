@@ -1,14 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================
-    // LUCIDE
-    // =========================
-
     lucide.createIcons();
 
-    // =========================
-    // AUTH GUARD
-    // =========================
 
     const currentUser =
         JSON.parse(
@@ -24,9 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================
-    // WELCOME USER
-    // =========================
+    const transactions =
+    JSON.parse(
+    localStorage.getItem(
+    "transactions"
+    )
+    ) || [];
+
 
     const firstName =
         currentUser.fullName.split(" ")[0];
@@ -42,10 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `Welcome Back, ${firstName} 👋`;
 
     }
-
-    // =========================
-    // USER AVATAR
-    // =========================
 
     const avatar =
         document.getElementById(
@@ -67,9 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================
     // MOBILE DRAWER
-    // =========================
 
     const mobileMenuBtn =
         document.getElementById(
@@ -279,155 +270,299 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================
+
+    function updateDashboardStats() {
+
+    const income = transactions
+        .filter(
+            item =>
+            item.type === "income"
+        )
+        .reduce(
+            (sum,item)=>
+            sum + item.amount,
+            0
+        );
+
+    const expenses = transactions
+        .filter(
+            item =>
+            item.type === "expense"
+        )
+        .reduce(
+            (sum,item)=>
+            sum + item.amount,
+            0
+        );
+
+    const balance =
+        income - expenses;
+
+    const savingsRate =
+        income > 0
+        ? Math.round(
+            (balance / income) * 100
+        )
+        : 0;
+
+    document.getElementById(
+        "currentBalance"
+    ).textContent =
+    `₦${balance.toLocaleString()}`;
+
+    document.getElementById(
+        "totalIncome"
+    ).textContent =
+    `₦${income.toLocaleString()}`;
+
+    document.getElementById(
+        "totalExpense"
+    ).textContent =
+    `₦${expenses.toLocaleString()}`;
+
+    document.getElementById(
+        "savingsRate"
+    ).textContent =
+    `${savingsRate}%`;
+
+    }
+
+
+    // Recent Transaction
+
+    function renderRecentTransactions() {
+
+    const container =
+        document.getElementById(
+            "recentTransactions"
+        );
+
+    if (!container) return;
+
+    container.innerHTML =
+        transactions
+            .slice(0, 5)
+            .map(item => `
+
+                <div class="flex items-center justify-between">
+
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+
+                            <i data-lucide="${item.icon || 'wallet'}"></i>
+
+                        </div>
+
+                        <div>
+
+                            <p class="font-medium dark:text-white">
+
+                                ${item.name}
+
+                            </p>
+
+                            <p class="text-xs text-slate-500">
+
+                                ${item.category}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <span class="${
+                        item.type === "income"
+                            ? "text-emerald-500"
+                            : "text-red-500"
+                    } font-medium">
+
+                        ${
+                            item.type === "income"
+                                ? "+"
+                                : "-"
+                        }
+
+                        ₦${item.amount.toLocaleString()}
+
+                    </span>
+
+                </div>
+
+            `)
+            .join("");
+
+    lucide.createIcons();
+
+}
+
+    // Budget Progress
+
+    function updateBudgetProgress(){
+
+    const income =
+    transactions
+    .filter(
+        item =>
+        item.type === "income"
+    )
+    .reduce(
+        (sum,item)=>
+        sum + item.amount,
+        0
+    );
+
+    const expenses =
+    transactions
+    .filter(
+        item =>
+        item.type === "expense"
+    )
+    .reduce(
+        (sum,item)=>
+        sum + item.amount,
+        0
+    );
+
+    const percent =
+    income > 0
+    ? Math.min(
+        Math.round(
+            (expenses / income) * 100
+        ),
+        100
+    )
+    : 0;
+
+    document.getElementById(
+        "budgetPercent"
+    ).textContent =
+    `${percent}%`;
+
+    document.getElementById(
+        "budgetBar"
+    ).style.width =
+    `${percent}%`;
+
+    document.getElementById(
+        "budgetNote"
+    ).textContent =
+    `₦${expenses.toLocaleString()} spent out of ₦${income.toLocaleString()} income`;
+
+    }
+
     // SPENDING TREND CHART
-    // =========================
 
-    const spendingCanvas =
-        document.getElementById(
-            "spendingChart"
-        );
+    const incomeTotal =
+    transactions
+    .filter(
+    item => item.type==="income"
+    )
+    .reduce(
+    (sum,item)=>
+    sum + item.amount,
+    0
+    );
 
-    if (spendingCanvas) {
+    const expenseTotal =
+    transactions
+    .filter(
+    item => item.type==="expense"
+    )
+    .reduce(
+    (sum,item)=>
+    sum + item.amount,
+    0
+    );
 
-        new Chart(
-            spendingCanvas,
-            {
+    new Chart(
+    document.getElementById(
+    "spendingChart"
+    ),
+    {
+    type:"bar",
+    data:{
+    labels:[
+    "Income",
+    "Expenses"
+    ],
+    datasets:[{
+    data:[
+    incomeTotal,
+    expenseTotal
+    ]
+    }]
+    }
+    }
+    );
 
-                type: "line",
+    new Chart(
+    document.getElementById(
+    "expenseChart"
+    ),
+    {
+    type:"doughnut",
+    data:{
+    labels:[
+    "Income",
+    "Expenses"
+    ],
+    datasets:[{
+    data:[
+    incomeTotal,
+    expenseTotal
+    ]
+    }]
+    }
+    }
+    );
 
-                data: {
+    updateDashboardStats();
 
-                    labels: [
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                        "Jun"
-                    ],
+    renderRecentTransactions();
 
-                    datasets: [
+    updateBudgetProgress();
 
-                        {
+    const fabButton =
+    document.getElementById("fabButton");
 
-                            label:
-                                "Monthly Spending",
+    const fabMenu =
+    document.getElementById("fabMenu");
 
-                            data: [
-                                40000,
-                                55000,
-                                48000,
-                                60000,
-                                75000,
-                                65000
-                            ],
+    const fabIcon =
+    document.getElementById("fabIcon");
 
-                            borderColor:
-                                "#10b981",
+    fabButton?.addEventListener("click", () => {
 
-                            backgroundColor:
-                                "rgba(16,185,129,0.1)",
+    if (fabMenu.classList.contains("hidden")) {
 
-                            tension: 0.4,
+        fabMenu.classList.remove("hidden");
 
-                            fill: true
+        setTimeout(() => {
 
-                        }
+            fabMenu.classList.remove("opacity-0");
+            fabMenu.classList.remove("translate-y-4");
+            fabMenu.classList.add("flex");
 
-                    ]
+        }, 10);
 
-                },
+    } else {
 
-                options: {
+        fabMenu.classList.add("opacity-0");
+        fabMenu.classList.add("translate-y-4");
 
-                    responsive: true,
+        setTimeout(() => {
 
-                    plugins: {
+            fabMenu.classList.add("hidden");
+            fabMenu.classList.remove("flex");
 
-                        legend: {
-
-                            display: false
-
-                        }
-
-                    }
-
-                }
-
-            }
-        );
+        }, 300);
 
     }
 
-    // =========================
-    // EXPENSE CHART
-    // =========================
+});
 
-    const expenseCanvas =
-        document.getElementById(
-            "expenseChart"
-        );
-
-    if (expenseCanvas) {
-
-        new Chart(
-            expenseCanvas,
-            {
-
-                type: "doughnut",
-
-                data: {
-
-                    labels: [
-
-                        "Food",
-                        "Transport",
-                        "Bills",
-                        "Savings",
-                        "Entertainment"
-
-                    ],
-
-                    datasets: [
-
-                        {
-
-                            data: [
-
-                                40,
-                                20,
-                                15,
-                                15,
-                                10
-
-                            ],
-
-                            backgroundColor: [
-
-                                "#10b981",
-                                "#06b6d4",
-                                "#f59e0b",
-                                "#8b5cf6",
-                                "#ef4444"
-
-                            ]
-
-                        }
-
-                    ]
-
-                },
-
-                options: {
-
-                    responsive: true
-
-                }
-
-            }
-        );
-
-    }
+lucide.createIcons();
 
 });

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Add Transaction | SPENZA</title>
+
+    <link rel="stylesheet" href="../css/output.css">
+
+    <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body
+    class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
+
+    <div class="min-h-screen flex">
+
+        <!-- SIDEBAR -->
+
+        <aside
+            class="hidden lg:flex w-72 bg-slate-950 text-white flex-col">
+
+            <div class="p-8">
+
+                <img
+                    src="../assets/logo/spenza-logo-dark.png"
+                    class="h-14"
+                    alt="SPENZA">
+
+            </div>
+
+            <nav class="flex-1 px-6">
+
+                <div class="space-y-2">
+
+                    <a
+                        href="./dashboard.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5">
+
+                        <i data-lucide="layout-dashboard"></i>
+
+                        Dashboard
+
+                    </a>
+
+                    <a
+                        href="./transactions.html"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+
+                        <i data-lucide="receipt"></i>
+
+                        Transactions
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5">
+
+                        <i data-lucide="wallet"></i>
+
+                        Budgets
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5">
+
+                        <i data-lucide="bar-chart-3"></i>
+
+                        Analytics
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5">
+
+                        <i data-lucide="settings"></i>
+
+                        Settings
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main class="flex-1 p-6 lg:p-8">
+
+            <!-- TOP BAR -->
+
+            <div
+                class="flex items-center justify-between">
+
+                <div>
+
+                    <a
+                        href="./transactions.html"
+                        class="inline-flex items-center gap-2 text-slate-500 hover:text-emerald-500">
+
+                        <i data-lucide="arrow-left"></i>
+
+                        Back
+
+                    </a>
+
+                    <h1
+                        id="pageTitle"
+                        class="text-4xl font-bold mt-4">
+
+                        Add Transaction
+
+                    </h1>
+
+                    <p
+                        id="pageSubtitle"
+                        class="text-slate-500 mt-2">
+
+                        Record a transaction.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+
+            <div
+                class="grid xl:grid-cols-3 gap-8 mt-10">
+
+                <!-- FORM -->
+
+                <div
+                    class="xl:col-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-sm">
+
+                    <form
+                        id="transactionForm"
+                        class="space-y-6">
+
+                        <div>
+
+                            <label
+                                class="block mb-2 font-medium">
+
+                                Transaction Name
+
+                            </label>
+
+                            <input
+                                id="transactionName"
+                                type="text"
+                                placeholder="Salary Payment"
+                                class="w-full px-5 py-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-transparent">
+
+                        </div>
+
+                        <div>
+
+                            <label
+                                class="block mb-2 font-medium">
+
+                                Amount
+
+                            </label>
+
+                            <input
+                                id="transactionAmount"
+                                type="number"
+                                placeholder="50000"
+                                class="w-full px-5 py-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-transparent">
+
+                        </div>
+
+                        <div>
+
+                            <label
+                                class="block mb-2 font-medium">
+
+                                Category
+
+                            </label>
+
+                            <select
+                                id="transactionCategory"
+                                class="w-full px-5 py-4 rounded-2xl text-white bg-slate-900 border border-slate-700 dark:border-slate-700 bg-transparent">
+
+                                <option>Salary</option>
+
+                                <option>Food</option>
+
+                                <option>Transport</option>
+
+                                <option>Bills</option>
+
+                                <option>Shopping</option>
+
+                                <option>Entertainment</option>
+
+                            </select>
+
+                        </div>
+
+                        <div
+                            id="formMessage"
+                            class="hidden rounded-xl p-4">
+                        </div>
+
+                        <div class="flex gap-4">
+
+                            <button
+                                    id="saveBtn"
+                                    type="submit"
+                                    class="flex-1 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold">
+
+                                    Save Transaction
+
+                            </button>
+
+                            <button
+                                    id="deleteBtn"
+                                    type="button"
+                                    class="hidden px-6 py-4 rounded-2xl bg-red-500 hover:bg-red-600 text-white font-semibold">
+
+                                    Delete
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- RIGHT PANEL -->
+
+                <div
+                    class="space-y-6">
+
+                    <div
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+
+                        <h3
+                            class="font-semibold text-lg mb-4">
+
+                            Smart Tips
+
+                        </h3>
+
+                        <ul
+                            class="space-y-4 text-sm text-slate-500">
+
+                            <li>
+
+                                💡 Save at least 20% of every income.
+
+                            </li>
+
+                            <li>
+
+                                💡 Categorize transactions properly.
+
+                            </li>
+
+                            <li>
+
+                                💡 Review expenses weekly.
+
+                            </li>
+
+                            <li>
+
+                                💡 Avoid unnecessary subscriptions.
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+
+                        <h3
+                            class="font-semibold text-lg mb-4">
+
+                            Recent Activity
+
+                        </h3>
+
+                        <div
+                            id="recentActivity"
+                            class="space-y-4">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+
+            document.documentElement
+                .classList.add("dark");
+
+        }
+
+    </script>
+
+    <script src="../js/transactions/addTransaction.js"></script>
+    <script src="../js/utils/theme.js"></script>
+
+</body>
+
+</html>

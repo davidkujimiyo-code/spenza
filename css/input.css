@@ -13,3 +13,8 @@
     background: #10b981;
     border-color: #10b981;
 }
+
+select option{
+    background:#0f172a;
+    color:white;
+}

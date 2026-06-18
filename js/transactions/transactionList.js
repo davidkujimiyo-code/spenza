@@ -167,43 +167,30 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    let transactions = [
+    let transactions =
+    JSON.parse(
+    localStorage.getItem(
+    "transactions"
+    )
+    ) || [
 
-        {
-            name: "Salary Payment",
-            amount: 350000,
-            type: "income",
-            category: "Salary",
-            icon: "wallet",
-            date: "Today"
-        },
+    {
+        name:"Salary Payment",
+        amount:350000,
+        type:"income",
+        category:"Salary",
+        icon:"wallet",
+        date:"Today"
+    },
 
-        {
-            name: "Netflix Subscription",
-            amount: 7500,
-            type: "expense",
-            category: "Entertainment",
-            icon: "film",
-            date: "Yesterday"
-        },
-
-        {
-            name: "Transport",
-            amount: 2000,
-            type: "expense",
-            category: "Mobility",
-            icon: "car",
-            date: "2 days ago"
-        },
-
-        {
-            name: "Food & Dining",
-            amount: 5500,
-            type: "expense",
-            category: "Food",
-            icon: "utensils-crossed",
-            date: "3 days ago"
-        }
+    {
+        name:"Netflix Subscription",
+        amount:7500,
+        type:"expense",
+        category:"Entertainment",
+        icon:"film",
+        date:"Yesterday"
+    }
 
     ];
 
@@ -337,7 +324,10 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML =
             filtered.map(item => `
 
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300">
+                <div
+                    onclick="
+                    window.location.href='./add-transaction.html?id=${item.id}&type=${item.type}'"
+                    class="cursor-pointer bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300">
 
                     <div class="flex items-center justify-between">
 
@@ -372,15 +362,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         </div>
 
-                        <div class="${item.type === "income"
-                                ? "text-emerald-500"
-                                : "text-red-500"} font-bold">
+                        <div class="flex items-center gap-4">
 
-                            ${item.type === "income"
-                                ? "+"
-                                : "-"}
+                            <div class="${
+                                item.type === "income"
+                                    ? "text-emerald-500"
+                                    : "text-red-500"
+                            } font-bold">
 
-                            ₦${item.amount.toLocaleString()}
+                                ${
+                                    item.type === "income"
+                                        ? "+"
+                                        : "-"
+                                }
+
+                                ₦${item.amount.toLocaleString()}
+
+                            </div>
+
+                            <div
+                                class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-cyan-500/10 hover:scale-110 transition-all duration-300">
+
+                                <i
+                                    data-lucide="square-pen"
+                                    class="w-4 h-4 text-cyan-400">
+                                </i>
+
+                            </div>
 
                         </div>
 
@@ -406,6 +414,29 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    const incomeTotal =
+    transactions
+        .filter(
+            item => item.type === "income"
+        )
+        .reduce(
+            (sum, item) =>
+                sum + item.amount,
+            0
+        );
+
+    const expenseTotal =
+    transactions
+        .filter(
+            item => item.type === "expense"
+        )
+        .reduce(
+            (sum, item) =>
+                sum + item.amount,
+            0
+        );
+
+
     const trendChart =
         document.getElementById(
             "spendingTrendChart"
@@ -420,12 +451,8 @@ document.addEventListener("DOMContentLoaded", () => {
             data: {
 
                 labels: [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun"
+                "Income",
+                "Expenses"
                 ],
 
                 datasets: [{
@@ -433,12 +460,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     label: "Spending",
 
                     data: [
-                        20000,
-                        40000,
-                        30000,
-                        70000,
-                        60000,
-                        100000
+                    incomeTotal,
+                    expenseTotal
                     ],
 
                     borderColor: "#10b981",
@@ -472,21 +495,15 @@ document.addEventListener("DOMContentLoaded", () => {
             data: {
 
                 labels: [
-                    "Food",
-                    "Transport",
-                    "Bills",
-                    "Savings",
-                    "Entertainment"
+                "Income",
+                "Expenses"
                 ],
 
                 datasets: [{
 
                     data: [
-                        40,
-                        20,
-                        15,
-                        15,
-                        10
+                    incomeTotal,
+                    expenseTotal
                     ],
 
                     backgroundColor: [
@@ -505,8 +522,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    function renderRecentActivity() {
+
+    const recentActivity =
+        document.getElementById(
+            "recentActivity"
+        );
+
+    if (!recentActivity) return;
+
+    recentActivity.innerHTML =
+        transactions
+            .slice(0, 5)
+            .map(item => `
+
+                <div class="flex items-center justify-between py-3 border-b border-slate-800">
+
+                    <div>
+
+                        <p class="font-medium">
+
+                            ${item.name}
+
+                        </p>
+
+                        <p class="text-xs text-slate-500">
+
+                            ${item.category}
+
+                        </p>
+
+                    </div>
+
+                    <span class="${
+                        item.type === "income"
+                        ? "text-emerald-500"
+                        : "text-red-500"
+                    }">
+
+                        ${
+                            item.type === "income"
+                            ? "+"
+                            : "-"
+                        }
+
+                        ₦${item.amount.toLocaleString()}
+
+                    </span>
+
+                </div>
+
+            `).join("");
+
+}
+
     updateStats();
 
     renderTransactions();
+
+    renderRecentActivity();
 
 });
